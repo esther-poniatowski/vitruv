@@ -21,7 +21,7 @@ TODO: Remove sections marked OPTIONAL if they do not apply to the project.
 [![Python](https://img.shields.io/badge/python-%E2%89%A53.12-blue)](https://www.python.org/)
 [![License: GPL](https://img.shields.io/badge/License-GPL--3.0-yellow.svg)](https://opensource.org/licenses/GPL-3.0)
 
-Static architecture analysis system for evaluating structural quality of software systems across programming languages
+Analyzes the structural quality of software projects across programming languages.
 
 ---
 

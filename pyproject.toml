@@ -27,7 +27,7 @@ authors = [{name = "Esther Poniatowski", email = "esther.poniatowski@ens.psl.eu"
 license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
 readme = {file = "README.md", content-type = "text/markdown"}
-description = "Static architecture analysis system for evaluating structural quality of software systems across programming languages"
+description = "Analyzes the structural quality of software projects across programming languages."
 keywords = []
 classifiers = [
     "Programming Language :: Python :: 3",
