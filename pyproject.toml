@@ -1,0 +1,68 @@
+# ==================================================================================================
+# Pyproject Configuration for the vitruv Package
+#
+# TODO: Replace placeholders with actual values.
+#
+# - vitruv: Name of the package
+# - Esther Poniatowski : Author's name
+# - esther.poniatowski@ens.psl.eu       : Author's email
+# - Static architecture analysis system for evaluating structural quality of software systems across programming languages : Brief description of the package
+# - esther-poniatowski   : GitHub username
+# - vitruv   : GitHub repository name
+# ==================================================================================================
+
+# --- Build System Requirements --------------------------------------------------------------------
+
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+# --- Package Metadata -----------------------------------------------------------------------------
+
+[project]
+name = "vitruv"
+version = "0.0.0"
+authors = [{name = "Esther Poniatowski", email = "esther.poniatowski@ens.psl.eu"}]
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+readme = {file = "README.md", content-type = "text/markdown"}
+description = "Static architecture analysis system for evaluating structural quality of software systems across programming languages"
+keywords = []
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha"
+]
+urls = {homepage = "https://github.com/esther-poniatowski/vitruv"}
+
+
+# --- Dependencies ---------------------------------------------------------------------------------
+
+requires-python = ">=3.12"
+
+dependencies = [
+
+]
+
+
+# --- Package Source Code --------------------------------------------------------------------------
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# --- CLI Entry Points -----------------------------------------------------------------------------
+
+[project.scripts]
+vitruv = "vitruv.cli:app"
+
+# --- Tool Configurations --------------------------------------------------------------------------
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
