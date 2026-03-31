@@ -1,14 +1,15 @@
 # vitruv
 
-Welcome to the vitruv documentation.
+Analyzes the structural quality of software projects across programming languages.
 
 ```{toctree}
 :maxdepth: 2
 :caption: User Guide
 
-guide/getting-started
-guide/configuration
+guide/installation
+guide/usage
 guide/cli-reference
+guide/configuration
 ```
 
 ```{toctree}
