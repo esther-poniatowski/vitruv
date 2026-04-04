@@ -39,6 +39,14 @@ cohesion, contract conformance, or architectural smell patterns.
   unstable dependencies, and layer violations.
 - **Design pattern reasoning** — evaluates whether observed patterns align with
   declared architectural intent.
+- **Policy-aware diagnostics** — each diagnostic compares the extracted architecture
+  against a declared target specification, reflecting the project's own intent rather
+  than universal assumptions.
+- **Confidence annotations** — every extracted relation carries a confidence level, and
+  diagnostics are classified as either hard violations (deterministic) or soft
+  suspicions (probabilistic).
+- **Refactoring-oriented patterns** — design patterns are treated as conditional
+  refactoring hypotheses for diagnosed defects, not as taxonomic labels.
 
 ### Theoretical Foundations
 
@@ -50,18 +58,84 @@ graph-theoretic structural analysis.
 
 ## Features
 
-- [ ] **Dependency graph analysis**: Extract and analyze import graphs, detect cycles,
-  measure coupling metrics.
-- [ ] **Responsibility and cohesion analysis**: Evaluate module cohesion through
-  structural and semantic indicators.
-- [ ] **Contract and interface analysis**: Check interface segregation, dependency
-  inversion, and protocol conformance.
-- [ ] **Architectural smell detection**: Identify god modules, unstable dependencies,
-  shotgun surgery, and layer violations.
-- [ ] **Design pattern reasoning**: Evaluate pattern usage against declared
-  architectural intent.
-- [ ] **Conformance checking**: Verify that a codebase conforms to its declared
-  architecture.
+### Dependency Graph Analysis
+
+- [ ] **Cycle detection**: Detect strongly connected components in import and call
+  subgraphs, particularly across bounded-context boundaries.
+- [ ] **Layer violations**: Flag dependency edges directed against the declared layer
+  order.
+- [ ] **Instability inversions**: Identify stable components with high efferent coupling
+  to volatile components.
+- [ ] **Composition root violations**: Flag infrastructure services constructed outside
+  designated assembly zones.
+- [ ] **Cross-layer shortcuts**: Detect direct dependencies that bypass intermediate
+  interface layers.
+
+### Responsibility and Cohesion Analysis
+
+- [ ] **Mixed concerns**: Detect components combining orchestration, business logic,
+  persistence, and presentation roles.
+- [ ] **Structural cohesion**: Measure method–field bipartite graph connectivity (LCOM
+  family).
+- [ ] **Disjoint collaborator neighborhoods**: Detect service objects whose call graph
+  decomposes into unrelated clusters.
+
+### Contract and Interface Analysis
+
+- [ ] **Concrete-to-abstract violations**: Flag direct dependencies on implementations
+  where an interface is expected.
+- [ ] **Leaky interfaces**: Detect public boundary signatures that reference
+  infrastructure-layer types.
+- [ ] **Interface segregation violations**: Identify over-broad contracts with unrelated
+  client groups.
+
+### Configuration and Variability Analysis
+
+- [ ] **Magic strings**: Detect string literals used as routing keys, event names, or
+  service selectors outside their definition site.
+- [ ] **Scattered configuration access**: Flag configuration reads distributed across
+  layers rather than isolated in a composition root.
+- [ ] **Hardcoded infrastructure details**: Detect literal connection strings, file
+  paths, or service addresses inside domain-layer code.
+
+### Architectural Smell Detection
+
+- [ ] **God module / God service**: Identify components with anomalously high fan-in
+  and heterogeneous collaborator sets.
+- [ ] **Shotgun surgery risk**: Detect a single logical concern requiring modifications
+  distributed across many unrelated components.
+- [ ] **Framework leakage**: Flag framework types appearing in domain-layer signatures
+  or dependencies.
+- [ ] **Policy–mechanism conflation**: Detect components combining decision rules with
+  execution machinery.
+- [ ] **Hidden temporal coupling**: Identify execution-order dependencies not expressed
+  in the type or interface system.
+
+### Design Pattern Reasoning
+
+- [ ] **Structural motif detection**: Recognize creational, structural, and behavioral
+  pattern skeletons with confidence scores.
+- [ ] **Defect-to-pattern mapping**: Recommend candidate patterns as solutions to
+  diagnosed structural problems.
+- [ ] **Pattern composition analysis**: Reason over motif chains (e.g.,
+  Strategy-via-AbstractFactory) as distinct architectural commitments.
+
+### Conformance Checking
+
+- [ ] **Declared architecture specification**: Define allowed dependencies, layer
+  policies, composition root zones, and public boundary declarations in a versioned
+  YAML format.
+- [ ] **Drift detection**: Compare the extracted model against the declared target and
+  report divergences as policy violations.
+
+### Scoring and Reporting
+
+- [ ] **Hard/soft diagnostic separation**: Distinguish confirmed invariant violations
+  from probabilistic risk signals.
+- [ ] **Martin's metrics**: Compute instability, abstractness, and distance from the
+  main sequence per component.
+- [ ] **Connascence classification**: Characterize coupling between components by
+  connascence class (identity, type, meaning, algorithm, execution).
 
 ---
 
