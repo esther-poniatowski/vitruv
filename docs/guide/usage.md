@@ -1,89 +1,33 @@
 # Usage
 
-Vitruv analyzes the structural quality of software projects by extracting
-dependency graphs, measuring architectural metrics, and detecting structural
-smells. The tool operates on import graphs extracted from any language.
+Vitruv is a structural quality analyzer for software projects. The project is
+in early development; analysis features are planned but not yet implemented.
 
-For the full command registry, refer to [CLI Reference](cli-reference.md). For
-audit profiles and rule selection, refer to [Configuration](configuration.md).
+The only functional command is `info`, which prints version and platform
+diagnostics.
 
-## Analyzing a Project
-
-The `analyze` command extracts the dependency graph and reports structural
-metrics:
+## Displaying Project Information
 
 ```sh
-vitruv analyze src/
+vitruv info
 ```
 
-## Running an Architectural Audit
+The `info` command reports the installed version, Python runtime, and operating
+system.
 
-Audits evaluate specific structural dimensions. The `--profile` flag selects
-among predefined audit profiles:
+## Planned Features
 
-```sh
-vitruv audit src/ --profile component
-vitruv audit src/ --profile interaction
-vitruv audit src/ --profile model
-```
+The following capabilities are on the roadmap but do not exist yet:
 
-Each profile targets a distinct dimension:
-
-- **component** — module cohesion, responsibility boundaries, and internal
-  coupling.
-- **interaction** — dependency direction, interface segregation, and protocol
-  conformance.
-- **model** — data model consistency, abstraction levels, and domain
-  alignment.
-
-## Detecting Architectural Smells
-
-The `smells` command identifies common structural anti-patterns:
-
-```sh
-vitruv smells src/
-```
-
-Detected smells include cyclic dependencies, god modules, unstable
-dependencies, shotgun surgery, and layer violations.
-
-## Measuring Package Metrics
-
-Quantitative metrics follow Robert C. Martin's package principles:
-
-```sh
-vitruv metrics src/
-```
-
-Reported metrics include afferent coupling (Ca), efferent coupling (Ce),
-instability (I), abstractness (A), and distance from the main sequence (D).
-
-## Checking Conformance
-
-Verify that a codebase conforms to a declared architecture:
-
-```sh
-vitruv conform src/ --architecture architecture.yaml
-```
-
-The architecture file declares allowed and forbidden dependency directions
-between modules or layers.
-
-## Programmatic API
-
-The same analysis is accessible from Python:
-
-```python
-from vitruv.api import analyze
-
-report = analyze("src/")
-for module in report.modules:
-    print(f"{module.name}: I={module.instability:.2f} A={module.abstractness:.2f}")
-```
+- **analyze** -- Extract dependency graphs and report structural metrics.
+- **audit** -- Evaluate architectural dimensions against predefined profiles.
+- **smells** -- Detect structural anti-patterns (cyclic dependencies, god
+  modules, layer violations).
+- **metrics** -- Compute package-level coupling, instability, and abstractness.
+- **conform** -- Check a codebase against a declared architecture.
+- **Python API** -- Expose the analysis pipeline programmatically.
 
 ## Next Steps
 
-- [CLI Reference](cli-reference.md) — Full command registry and options.
-- [Configuration](configuration.md) — Audit profiles, rule selection.
-- [Design Principles](../standards/design-principles.md) — Software design standards.
-- [Audit Taxonomy](../design/audit-taxonomy.md) — Audit dimensions and categories.
+- [CLI Reference](cli-reference.md) -- Full command and option listing.
+- [Configuration](configuration.md) -- Tool configuration files.

@@ -1,30 +1,32 @@
 # Configuration
 
-## Configuration File
+Vitruv has no project-specific configuration yet. No YAML schema, environment
+variables, or runtime settings exist.
 
-vitruv reads configuration from YAML files located in the `config/`
-directory.
+## Third-Party Tool Configs
 
-The canonical configuration schema is provided in `config/default.yaml`.
+The `config/` directory contains configuration files for third-party
+development tools, organized into two subdirectories.
 
-```yaml
-# Example configuration
-var_1: value1
-var_2: value2
-```
+### `config/tools/`
 
-## Environment Variables
+Linter, formatter, and type-checker settings used during development:
 
-| Variable | Description | Default | Required |
-| -------- | ----------- | ------- | -------- |
-| `VAR_1` | Description. | None | Yes |
-| `VAR_2` | Description. | `false` | No |
+| File | Tool |
+| ---- | ---- |
+| `black.toml` | Black (formatter) |
+| `mypy.ini` | Mypy (type checker) |
+| `pylintrc.ini` | Pylint (linter, production code) |
+| `pylintrc_tests.ini` | Pylint (linter, test code) |
+| `pyrightconfig.json` | Pyright (type checker) |
+| `releaserc.toml` | semantic-release (versioning) |
 
-## Precedence
+### `config/dictionaries/`
 
-Configuration is resolved in the following order (highest priority first):
+Spelling dictionaries for CSpell or similar spell-checking tools:
 
-1. Command-line arguments
-2. Environment variables
-3. Project configuration file (`config/default.yaml`)
-4. Built-in defaults
+| File | Scope |
+| ---- | ----- |
+| `project.txt` | Project-specific terms |
+| `python.txt` | Python ecosystem terms |
+| `tools.txt` | Tool and library names |
