@@ -199,7 +199,7 @@ Do not generalize from one boundary pair into a systemic claim without evidence.
 ## Dimension Model
 
 The six audit dimensions correspond to the sections of
-[interaction-principles.md](../standards/interaction-principles.md), which is
+[interaction-principles.md](../internals/interaction-principles.md), which is
 the authoritative definition of each interaction rule. This prompt does not
 redefine the rules — it specifies how to detect violations and report findings.
 
@@ -209,7 +209,7 @@ Each finding must be assigned:
 
 ### 1. RESULT SHARING
 
-Detect violations of [§1 Result Sharing](../standards/interaction-principles.md#1-result-sharing).
+Detect violations of [§1 Result Sharing](../internals/interaction-principles.md#1-result-sharing).
 
 For each case:
 - identify the shared computation and its consumers
@@ -220,7 +220,7 @@ For each case:
 
 ### 2. SCOPE COORDINATION
 
-Detect violations of [§2 Scope Coordination](../standards/interaction-principles.md#2-scope-coordination).
+Detect violations of [§2 Scope Coordination](../internals/interaction-principles.md#2-scope-coordination).
 
 For each case:
 - identify the overlapping scopes and the components involved
@@ -231,7 +231,7 @@ For each case:
 
 ### 3. SEQUENCING
 
-Detect violations of [§3 Sequencing](../standards/interaction-principles.md#3-sequencing).
+Detect violations of [§3 Sequencing](../internals/interaction-principles.md#3-sequencing).
 
 For each case:
 - identify the ordering dependency and the components involved
@@ -240,7 +240,7 @@ For each case:
 
 ### 4. CONSISTENCY
 
-Detect violations of [§4 Consistency](../standards/interaction-principles.md#4-consistency).
+Detect violations of [§4 Consistency](../internals/interaction-principles.md#4-consistency).
 
 For each case:
 - identify the duplicated fact and its locations
@@ -250,7 +250,7 @@ For each case:
 
 ### 5. CONFLICT MANAGEMENT
 
-Detect violations of [§5 Conflict Management](../standards/interaction-principles.md#5-conflict-management).
+Detect violations of [§5 Conflict Management](../internals/interaction-principles.md#5-conflict-management).
 
 For each case:
 - identify the conflicting outputs and the components that produce them
@@ -260,7 +260,7 @@ For each case:
 
 ### 6. FAILURE PROPAGATION
 
-Detect violations of [§6 Failure Propagation](../standards/interaction-principles.md#6-failure-propagation).
+Detect violations of [§6 Failure Propagation](../internals/interaction-principles.md#6-failure-propagation).
 
 For each case:
 - identify the failure scenario and the boundary it crosses

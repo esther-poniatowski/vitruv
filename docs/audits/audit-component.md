@@ -168,7 +168,7 @@ Do not generalize from one local smell into a systemic claim without evidence.
 ## Dimension Model
 
 The nine audit dimensions correspond to the sections of
-[design-principles.md](../standards/design-principles.md), which is the
+[design-principles.md](../internals/design-principles.md), which is the
 authoritative definition of each architectural rule. This prompt does not
 redefine the rules — it specifies how to detect violations and report findings.
 
@@ -181,7 +181,7 @@ it under different dimensions.
 
 ### 1. REDUNDANCY
 
-Detect violations of [§2 Redundancy](../standards/design-principles.md#2-redundancy).
+Detect violations of [§2 Redundancy](../internals/design-principles.md#2-redundancy).
 
 For each case:
 - state the granularity of duplication
@@ -191,7 +191,7 @@ For each case:
 
 ### 2. SEPARATION OF CONCERNS
 
-Detect violations of [§1 Separation of Concerns](../standards/design-principles.md#1-separation-of-concerns).
+Detect violations of [§1 Separation of Concerns](../internals/design-principles.md#1-separation-of-concerns).
 
 For each violation:
 - identify the mixed responsibilities
@@ -200,14 +200,14 @@ For each violation:
 
 ### 3. MODULARITY
 
-Detect violations of [§3 Modularity](../standards/design-principles.md#3-modularity).
+Detect violations of [§3 Modularity](../internals/design-principles.md#3-modularity).
 
 Evaluate whether each unit can be used atomically, independently, and
 predictably.
 
 ### 4. FLEXIBILITY
 
-Detect violations of [§6.7 Strategy Substitution](../standards/design-principles.md#67-strategy-substitution) and [§6 Object Design](../standards/design-principles.md#6-object-design-and-flexibility).
+Detect violations of [§6.7 Strategy Substitution](../internals/design-principles.md#67-strategy-substitution) and [§6 Object Design](../internals/design-principles.md#6-object-design-and-flexibility).
 
 For each case:
 - identify the axis of variation
@@ -216,7 +216,7 @@ For each case:
 
 ### 5. CONFIGURABILITY
 
-Detect violations of [§5 Configuration](../standards/design-principles.md#5-configuration).
+Detect violations of [§5 Configuration](../internals/design-principles.md#5-configuration).
 
 For each case:
 - identify where configuration is encoded
@@ -225,7 +225,7 @@ For each case:
 
 ### 6. EXTENSIBILITY
 
-Detect violations of [§7 Extensibility](../standards/design-principles.md#7-extensibility).
+Detect violations of [§7 Extensibility](../internals/design-principles.md#7-extensibility).
 
 For each case:
 - identify the concrete future change scenario
@@ -234,7 +234,7 @@ For each case:
 
 ### 7. PREDICTABILITY
 
-Detect violations of [§4 Data Objects and Contracts](../standards/design-principles.md#4-data-objects-and-contracts).
+Detect violations of [§4 Data Objects and Contracts](../internals/design-principles.md#4-data-objects-and-contracts).
 
 For each case:
 - state what is unpredictable
@@ -243,7 +243,7 @@ For each case:
 
 ### 8. ROBUSTNESS
 
-Detect violations of [§8 Diagnostics, Errors, and Robustness](../standards/design-principles.md#8-diagnostics-errors-and-robustness).
+Detect violations of [§8 Diagnostics, Errors, and Robustness](../internals/design-principles.md#8-diagnostics-errors-and-robustness).
 
 For each case:
 - explain the failure mode
@@ -252,7 +252,7 @@ For each case:
 
 ### 9. EASE OF USE
 
-Detect violations of [§10 Ease of Use](../standards/design-principles.md#10-ease-of-use).
+Detect violations of [§10 Ease of Use](../internals/design-principles.md#10-ease-of-use).
 
 For each case:
 - explain the user-facing friction

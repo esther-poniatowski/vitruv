@@ -138,7 +138,7 @@ adaptation, persistence, and domain logic.
 ### Dimension model
 
 The component audit evaluates against the nine dimensions defined in the
-[design principles](../standards/design-principles.md):
+[design principles](../internals/design-principles.md):
 redundancy, separation of concerns, modularity, flexibility, configurability,
 extensibility, predictability, robustness, ease of use.
 

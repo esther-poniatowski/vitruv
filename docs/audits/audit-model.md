@@ -216,7 +216,7 @@ If more than 10 modeling defects exist, prioritize by:
 ## Dimension Model
 
 The four audit dimensions correspond to the sections of
-[modeling-principles.md](../standards/modeling-principles.md), which is the
+[modeling-principles.md](../internals/modeling-principles.md), which is the
 authoritative definition of each modeling rule. This prompt does not redefine
 the rules — it specifies how to detect violations and report findings.
 
@@ -226,7 +226,7 @@ Each finding must be assigned:
 
 ### 1. CONCEPT COVERAGE
 
-Detect violations of [§1 Concept Coverage](../standards/modeling-principles.md#1-concept-coverage).
+Detect violations of [§1 Concept Coverage](../internals/modeling-principles.md#1-concept-coverage).
 
 For each case:
 - identify the missing domain concept from the concept map
@@ -237,7 +237,7 @@ For each case:
 
 ### 2. RELATIONSHIP COVERAGE
 
-Detect violations of [§2 Relationship Coverage](../standards/modeling-principles.md#2-relationship-coverage).
+Detect violations of [§2 Relationship Coverage](../internals/modeling-principles.md#2-relationship-coverage).
 
 For each case:
 - identify the missing domain relationship from the concept map
@@ -247,7 +247,7 @@ For each case:
 
 ### 3. ABSTRACTION FIDELITY
 
-Detect violations of [§3 Abstraction Fidelity](../standards/modeling-principles.md#3-abstraction-fidelity).
+Detect violations of [§3 Abstraction Fidelity](../internals/modeling-principles.md#3-abstraction-fidelity).
 
 For each case:
 - identify the code construct and the domain concept it represents
@@ -259,7 +259,7 @@ For each case:
 
 ### 4. ABSTRACTION ECONOMY
 
-Detect violations of [§4 Abstraction Economy](../standards/modeling-principles.md#4-abstraction-economy).
+Detect violations of [§4 Abstraction Economy](../internals/modeling-principles.md#4-abstraction-economy).
 
 For each case:
 - identify the phantom abstraction
