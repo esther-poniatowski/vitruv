@@ -1,0 +1,49 @@
+# Boundary table of a set of tools, read by `vitruv boundaries check`.
+#
+# The analyst who checks the tools fills this table; the tools declare nothing for Vitruv. Every
+# path is relative to the workspace given by `--workspace`. The specification is
+# docs/guide/boundaries.md of Vitruv, and the schema is vitruv/schemas/boundaries.schema.json.
+_schema: vitruv:boundaries@1
+
+defaults:
+  # folder of the workspace holding each tool whose path is not given: <folder>/<name>
+  folder: projects
+  # files left out of the scan, as globs relative to the folder of a tool; omitted, the
+  # documentation and the development configuration of the tool
+  # exclude: ["docs/**", "**/*.md"]
+
+tools:
+  # one entry per tool; the name of the tool is also the namespace of its contracts
+  owner-tool:
+    # folder of the tool below the workspace; <defaults.folder>/<name> when omitted
+    # path: projects/owner-tool
+    # words naming the tool in a text; the name of the tool when omitted
+    # names: [owner-tool]
+    # import roots of the tool: Python packages and npm packages; the name when omitted
+    packages: [owner_tool, "@owner-tool/reader"]
+    # modules and packages forming the public interface of the tool
+    interfaces: [owner_tool.api, "@owner-tool/reader"]
+    formats:
+      # each format that the tool owns, by contract identifier or name
+      owner-tool:record:
+        # literals revealing the format in a file; a prefix ending with @ covers every version
+        markers: ["owner-tool:record@"]
+        # files of the tool publishing the format: schemas, vectors, cases
+        files: [specs/schemas/record.schema.json]
+
+  consumer-tool:
+    # tools of the set that the tool declares as dependencies
+    depends_on: [owner-tool]
+    uses:
+      # each format of another tool that the tool reads or writes, through the implementation of
+      # its owner: an interface module, the $id of a published schema, or the name of the owner
+      # when the command of the owner reads the document
+      owner-tool:record: {through: owner_tool.api}
+    # files kept in the scan, as globs relative to the folder of the tool; every file when omitted
+    # include: ["src/**", "tests/**"]
+
+entities:
+  # consumers, renderers and layouts that no tool may name, except the tools listed in known_by
+  renderer:
+    markers: ["renderer://"]
+    known_by: [owner-tool]

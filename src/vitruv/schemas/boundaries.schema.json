@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/esther-poniatowski/vitruv/specs/schemas/boundaries.schema.json",
+  "title": "vitruv:boundaries@1",
+  "description": "the boundary table of a set of tools, written by the analyst who checks them: each tool with its folder, its names, its dependencies, its public interface, the formats that it owns and the formats that it uses, and the entities that no tool may name",
+  "type": "object",
+  "required": [
+    "_schema",
+    "tools"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "_schema": {
+      "const": "vitruv:boundaries@1"
+    },
+    "defaults": {
+      "description": "the values that every tool takes unless it states its own",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "folder": {
+          "description": "the folder of the workspace that holds a tool whose path is not given; the tool then lies at <folder>/<name>",
+          "$ref": "#/$defs/relative-path"
+        },
+        "exclude": {
+          "description": "the files outside the scan, as globs relative to the folder of a tool; the documentation of a tool by default",
+          "$ref": "#/$defs/globs"
+        }
+      }
+    },
+    "tools": {
+      "description": "the tools of the set, by name; a name is also the namespace of the contracts that the tool owns",
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$ref": "#/$defs/name"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/tool"
+      }
+    },
+    "entities": {
+      "description": "the consumers, renderers and layouts that no tool may name, unless the tool is listed under known_by",
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/name"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "markers"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "markers": {
+            "$ref": "#/$defs/markers"
+          },
+          "known_by": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "$ref": "#/$defs/name"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "relative-path": {
+      "description": "a path below the workspace, with segments separated by / and no segment ..",
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "pattern": "^/|(?:^|/)\\.\\.(?:/|$)"
+      }
+    },
+    "globs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "markers": {
+      "description": "literal texts whose presence in a file reveals the subject",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    },
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "description": "the folder of the tool below the workspace; <defaults.folder>/<name> by default",
+          "$ref": "#/$defs/relative-path"
+        },
+        "names": {
+          "description": "the words that name the tool in a text; the name of the tool by default",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "depends_on": {
+          "description": "the tools of the set that the tool declares as dependencies",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/name"
+          }
+        },
+        "packages": {
+          "description": "the import roots of the tool: Python packages and npm packages; the name of the tool by default",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "interfaces": {
+          "description": "the modules and packages that form the public interface of the tool",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "formats": {
+          "description": "the formats that the tool owns, by contract identifier or name",
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "markers": {
+                "$ref": "#/$defs/markers"
+              },
+              "files": {
+                "description": "the files of the tool that publish the format, such as its schemas, vectors or cases",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "#/$defs/relative-path"
+                }
+              }
+            }
+          }
+        },
+        "uses": {
+          "description": "the formats of other tools that the tool reads or writes, each with the implementation of the owner that it uses",
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "through"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "through": {
+                "description": "a module or package of the interface of the owner, the $id of a published schema of the owner, or the name of the owner when its own command reads the document, such as its configuration held by the tool",
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "exclude": {
+          "$ref": "#/$defs/globs"
+        },
+        "include": {
+          "description": "the files inside the scan, as globs relative to the folder of the tool; every file by default",
+          "$ref": "#/$defs/globs"
+        }
+      }
+    }
+  }
+}
