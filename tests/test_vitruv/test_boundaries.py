@@ -39,7 +39,7 @@ TABLE = {
             "uses": {"regis:registry@1": {"through": "regis.core"}},
         },
     },
-    "entities": {"renderer": {"markers": ["obsidian://"], "known_by": ["lone"]}},
+    "entities": {"renderer": {"markers": ["viewer://"], "known_by": ["lone"]}},
 }
 
 FILES = {
@@ -53,13 +53,13 @@ FILES = {
         'OTHER = "regis:other@1"\n'
         'VECTORS = "../regis/specs"\n'
         'CASES = Path(__file__).parents[2] / "regis" / "specs"\n'
-        'LINK = "obsidian://open"\n'
+        'LINK = "viewer://open"\n'
     ),
     "tools/user/tests/registry.schema.json": json.dumps(REGISTRY_SCHEMA),
     "tools/user/tests/drifted.schema.json": json.dumps({**REGISTRY_SCHEMA, "type": "array"}),
     "tools/lone/notes/ignored.py": 'NAME = "registry.lock"\n',
     "tools/lone/src/lone/main.py": (
-        "from regis.api import read\n" 'NAME = "registry.lock"\n' 'LINK = "obsidian://open"\n'
+        "from regis.api import read\n" 'NAME = "registry.lock"\n' 'LINK = "viewer://open"\n'
     ),
     "tools/lazy/src/lazy/main.py": "VALUE = 1\n",
     "tools/wrong/src/wrong/main.py": "from regis.core import read\n",
@@ -99,7 +99,7 @@ def test_each_rule_reports_its_planted_instance(tmp_path: Path) -> None:
         ),
         ("user", "reads/sibling-path", "tools/user/src/user/read.py", "../regis"),
         ("user", "reads/sibling-path", "tools/user/src/user/read.py", 'parents[2] / "regis"'),
-        ("user", "agnostic/entity-name", "tools/user/src/user/read.py", "obsidian://"),
+        ("user", "agnostic/entity-name", "tools/user/src/user/read.py", "viewer://"),
         (
             "user",
             "implementations/copied-file",

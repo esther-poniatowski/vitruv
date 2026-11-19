@@ -537,10 +537,10 @@ def _sibling_pattern(folder: str) -> re.Pattern[str]:
 
     Examples
     --------
-    >>> pattern = _sibling_pattern("elenchos")
+    >>> pattern = _sibling_pattern("other")
     >>> [bool(pattern.search(text)) for text in (
-    ...     '"../elenchos/specs"', 'Path(__file__).parents[3] / "elenchos" / "specs"',
-    ...     'path.join(root, "..", "elenchos")', '"elenchos"', '"../elenchos-data"')]
+    ...     '"../other/specs"', 'Path(__file__).parents[3] / "other" / "specs"',
+    ...     'path.join(root, "..", "other")', '"other"', '"../other-data"')]
     [True, True, True, False, False]
     """
     name = re.escape(folder)

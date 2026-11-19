@@ -41,7 +41,6 @@ DEFAULT_EXCLUDE = (
     ".github/**",
     ".vscode/**",
     "*.code-workspace",
-    "**/config/tools/**",
     "**/pyproject.toml",
     "**/package.json",
     "**/tsconfig*.json",

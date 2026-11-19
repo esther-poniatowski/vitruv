@@ -28,7 +28,7 @@ Every finding has the level `error`. Its resource is the file, or the folder of 
 The scan of a tool reads the files that Git tracks in its folder, or every file of a folder that is no Git working tree. By default, the scan leaves out the documentation and the development configuration of the tool, since they hold no output, schema, message or test:
 
 - `docs/`, and the Markdown and reStructuredText files;
-- `.github/`, `.vscode/` and `config/tools/`;
+- `.github/` and `.vscode/`;
 - `pyproject.toml`, `package.json`, `tsconfig*.json`, `environment.yml` and `conda.recipe/`;
 - `.gitignore`, `.gitattributes` and `.gitmessage`.
 
