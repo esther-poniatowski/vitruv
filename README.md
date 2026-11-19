@@ -128,6 +128,14 @@ graph-theoretic structural analysis.
 - [ ] **Drift detection**: Compare the extracted model against the declared target and
   report divergences as policy violations.
 
+### Boundaries Between Tools
+
+- [x] **Boundary check**: `vitruv boundaries check` reports each crossing of a boundary between
+  the tools of a set, against a [boundary table](docs/guide/boundaries.md) that the analyst fills
+  from the packaged template: undeclared formats and dependencies, sibling paths, copies of
+  published files, contracts invented in the namespace of another tool, names of dependents and
+  of entities, and imports of internal modules.
+
 ### Scoring and Reporting
 
 - [ ] **Hard/soft diagnostic separation**: Distinguish confirmed invariant violations

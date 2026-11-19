@@ -10,6 +10,7 @@ guide/installation
 guide/usage
 guide/cli-reference
 guide/configuration
+guide/boundaries
 ```
 
 ```{toctree}
